@@ -1,2 +1,2 @@
-# KendallsWeightedDistance
-Code respository for computation of Kendall's weighted distance
+# KendallWeightedDistance
+Code respository for computation of the Kendall weighted distance
