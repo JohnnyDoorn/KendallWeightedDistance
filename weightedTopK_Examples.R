@@ -5,8 +5,8 @@
 #     of the 19th international conference on world wide web (pp. 571–580).
 
 
-# Function to compute the weighted, partial Kendall's tau distance metric.
-# This function takes 2 vectors of integers, x and y, and computes Kendall's distance.
+# Function to compute the weighted, partial Kendall tau distance metric.
+# This function takes 2 vectors of integers, x and y, and computes the Kendall distance.
 # This distance is basically a bubble sort algorithm, where the number of swaps 
 # is the distance. The cost of these swaps can be modified by the different 
 # types of weight: similarity, position, and item weights. 
