@@ -31,7 +31,7 @@
 # because of the specified dissimilarity matrix.
 
 calcTopTau <- function(x, y, 
-                       theta = 0, 
+                       missingProb = 0, 
                        distMat = NULL, 
                        itemWeights = NULL, 
                        posWeights = NULL, 
@@ -123,7 +123,7 @@ calcTopTau <- function(x, y,
         
       } else if (nMatches == 2 & ((aInX & bInX) | (aInY & bInY))) {
         # 3) a and b in x, none in y, or other way around; + p
-        addThis <- theta
+        addThis <- missingProb
         
       } else if (nMatches == 4) {
         # 4) a preferred to b in y, but other way around in x; + 1
@@ -224,8 +224,25 @@ allSodas[yNum]
 # is not included by B. To model the probability that the person who does not include
 # the sodas, would prefer the same soda as the other person, we specify 'p'. If p is 0
 # we give the benefit of the doubt. When p  = 1, we are pessimistic and penalize the missingness.
-calcTopTau(xNum, yNum, theta = 0) # optimistic
-calcTopTau(xNum, yNum, theta = 0.5) # neutral
-calcTopTau(xNum, yNum, theta = 1) # pessimistic
+calcTopTau(xNum, yNum, missingProb = 0) # optimistic
+calcTopTau(xNum, yNum, missingProb = 0.5) # neutral
+calcTopTau(xNum, yNum, missingProb = 1) # pessimistic
 
 
+
+
+calcTopTau(x = c("Coke", "Pepsi", "Fanta", "Sprite"),
+           y = c("Pepsi", "Coke", "Fanta", "Sprite"),
+           posWeights = "DCG")
+
+
+calcTopTau(x = c("Coke", "Pepsi", "Fanta", "Sprite"),
+           y = c("Coke", "Fanta", "Pepsi", "Sprite"),
+           posWeights = "DCG")
+
+calcTopTau(x = c("Coke", "Pepsi", "Fanta", "Sprite"),
+           y = c("Pepsi", "Coke", "Fanta", "Sprite"))
+
+
+calcTopTau(x = c("Coke", "Pepsi", "Fanta", "Sprite"),
+           y = c("Coke", "Fanta", "Pepsi", "Sprite"))

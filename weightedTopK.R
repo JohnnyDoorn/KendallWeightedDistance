@@ -31,7 +31,7 @@
 # because of the specified dissimilarity matrix.
 
 calcTopTau <- function(x, y, 
-                       theta = 0, 
+                       missingProb = 0, 
                        distMat = NULL, 
                        itemWeights = NULL, 
                        posWeights = NULL, 
@@ -123,7 +123,7 @@ calcTopTau <- function(x, y,
         
       } else if (nMatches == 2 & ((aInX & bInX) | (aInY & bInY))) {
         # 3) a and b in x, none in y, or other way around; + p
-        addThis <- theta 
+        addThis <- missingProb 
         
       } else if (nMatches == 4) {
         # 4) a preferred to b in y, but other way around in x; + 1
